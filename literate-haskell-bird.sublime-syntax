@@ -1,0 +1,23 @@
+%YAML 1.2
+---
+name: Literate Haskell (Bird)
+file_extensions:
+  - lhs
+scope: source.haskell.bird
+
+contexts:
+  main:
+    - match: (?=^>) # match code block
+      push: Packages/Haskell/Haskell.sublime-syntax
+      with_prototype:
+        - match: (^>)
+          scope: punctuation.definition.generic.begin
+        - match: (^(?!>))
+          pop: true
+        # adapted from Haskell.sublime-syntax:
+        - match: '\s*([a-z_][a-zA-Z0-9_'']*|\([|!%$+\-.,=</>]+\))\s*(::|∷)'
+          captures:
+            1: entity.name.function.haskell
+            2: keyword.other.double-colon.haskell
+    - match: ([\s\S]*) # match anything else
+      scope: comment.block.documentation
