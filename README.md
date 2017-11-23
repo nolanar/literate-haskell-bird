@@ -1,5 +1,5 @@
 # literate-haskell-bird
-Syntax definition for literate Haskell bird style
+Syntax definition for literate Haskell bird style in Sublime Text 3
 
 ## Installation (Using Package Control)
 
